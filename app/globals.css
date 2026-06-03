@@ -1,0 +1,228 @@
+@import "tailwindcss";
+
+@theme {
+  /* ===== WIT.ID core palette — red brand on near-black (per wit.id) ===== */
+  --color-wit-black: #0a0a0f;
+  --color-wit-charcoal: #14121a;
+  --color-wit-graphite: #1c1820;
+  --color-wit-border: #2c2630;
+  --color-wit-gray: #6b7280;
+  --color-wit-muted: #9ca3af;
+  --color-wit-light-gray: #e5e7eb;
+  --color-wit-white: #ffffff;
+
+  /* Primary brand red + tonal range */
+  --color-wit-red: #f5333d;
+  --color-wit-red-bright: #ff5862;
+  --color-wit-red-deep: #c81e28;
+
+  /* Deep maroon used for the gradient sweeps */
+  --color-wit-maroon: #5b1119;
+  --color-wit-maroon-soft: #7a1a22;
+
+  /* State colors (kept distinct from brand red) */
+  --color-wit-blue: #2563eb;
+  --color-wit-orange: #f59e0b;
+  --color-wit-success: #22c55e;
+  --color-wit-danger: #ef4444;
+  --color-wit-surface-light: #f8fafc;
+
+  /* State background swatches */
+  --color-state-success-bg: #052e16;
+  --color-state-duplicate-bg: #451a03;
+  --color-state-invalid-bg: #450a0a;
+  --color-state-qualified-bg: #3a0a0e;
+  --color-state-inactive-bg: #1f2937;
+
+  /* Radii */
+  --radius-card: 20px;
+  --radius-panel: 24px;
+  --radius-scanner: 28px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* Fonts */
+  --font-sans: var(--font-inter), "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Motion */
+  --animate-aurora: aurora 22s ease-in-out infinite;
+  --animate-aurora-slow: aurora 34s ease-in-out infinite;
+  --animate-glow-pulse: glow-pulse 3.2s ease-in-out infinite;
+  --animate-scanline: scanline 2.6s linear infinite;
+  --animate-shimmer: shimmer 2.4s linear infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-rise: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes aurora {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.55;
+  }
+  33% {
+    transform: translate3d(6%, -4%, 0) scale(1.15);
+    opacity: 0.8;
+  }
+  66% {
+    transform: translate3d(-5%, 5%, 0) scale(0.95);
+    opacity: 0.65;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    filter: blur(14px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(22px);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(1000%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+:root {
+  color-scheme: dark;
+  --background: #0a0a0f;
+  --foreground: #ffffff;
+}
+
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+}
+
+/* ===== Glassmorphism utilities ===== */
+@utility glass {
+  background: color-mix(in oklab, #ffffff 5%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid color-mix(in oklab, #ffffff 12%, transparent);
+}
+
+@utility glass-strong {
+  background: color-mix(in oklab, #ffffff 8%, transparent);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid color-mix(in oklab, #ffffff 16%, transparent);
+}
+
+@utility glass-panel {
+  background:
+    linear-gradient(
+      160deg,
+      color-mix(in oklab, #ffffff 7%, transparent),
+      color-mix(in oklab, #ffffff 2%, transparent)
+    );
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid color-mix(in oklab, #ffffff 12%, transparent);
+}
+
+/* Brand gradient text (deep → bright red) */
+@utility text-gradient {
+  background: linear-gradient(
+    100deg,
+    var(--color-wit-red-bright),
+    var(--color-wit-red-deep)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Neon red glow */
+@utility glow-red {
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--color-wit-red) 35%, transparent),
+    0 0 28px -4px color-mix(in oklab, var(--color-wit-red) 60%, transparent);
+}
+
+/* Animated red→maroon gradient hairline border */
+.grad-border {
+  position: relative;
+  isolation: isolate;
+}
+.grad-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    130deg,
+    color-mix(in oklab, var(--color-wit-red) 75%, transparent),
+    transparent 40%,
+    transparent 60%,
+    color-mix(in oklab, var(--color-wit-maroon-soft) 80%, transparent)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-wit-border) transparent;
+}
