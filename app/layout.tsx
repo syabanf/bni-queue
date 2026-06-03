@@ -13,13 +13,23 @@ export const metadata: Metadata = {
   description: "Digital passport, stamp, and engagement platform for BNI National Conference.",
 };
 
+// Runs before paint to apply the saved theme (no flash of the wrong theme).
+const themeInit = `try{if(localStorage.getItem('bni-theme')==='light')document.documentElement.classList.add('light')}catch(e){}`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${inter.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+      </head>
       <body className="min-h-full bg-wit-black text-wit-white">{children}</body>
     </html>
   );

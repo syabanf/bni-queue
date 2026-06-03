@@ -21,7 +21,7 @@ const TONES: Record<BadgeTone, string> = {
   active: "bg-state-success-bg text-wit-success",
   inactive: "bg-state-inactive-bg text-wit-muted",
   info: "bg-wit-red/10 text-wit-red",
-  neutral: "bg-white/5 text-wit-muted",
+  neutral: "bg-wit-graphite text-wit-muted",
 };
 
 export function Badge({

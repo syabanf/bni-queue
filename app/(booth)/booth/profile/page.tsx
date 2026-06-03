@@ -97,7 +97,7 @@ export default async function BoothProfilePage() {
               </span>
             </div>
             {stats ? (
-              <div className="grid grid-cols-3 gap-px bg-white/5 border-t border-white/10">
+              <div className="grid grid-cols-3 gap-px bg-wit-graphite border-t border-wit-border">
                 <StatCell label="Visitors" value={stats.totalToday} accent />
                 <StatCell label="Duplicates" value={stats.duplicateToday} />
                 <StatCell

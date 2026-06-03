@@ -34,8 +34,8 @@ export function AdminSidebarNav() {
                 className={cn(
                   "relative block rounded-md px-3 py-2 transition-colors",
                   active
-                    ? "bg-wit-red font-semibold text-wit-white"
-                    : "text-wit-muted hover:bg-white/5 hover:text-wit-red",
+                    ? "bg-wit-red font-semibold text-wit-onred"
+                    : "text-wit-muted hover:bg-wit-graphite hover:text-wit-red",
                 )}
               >
                 {active ? (

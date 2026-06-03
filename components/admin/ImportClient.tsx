@@ -56,7 +56,7 @@ export function ImportClient() {
             name="file"
             accept=".csv,.xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/csv"
             required
-            className="block w-full text-sm text-wit-muted file:mr-4 file:rounded-md file:border-0 file:bg-wit-red file:px-4 file:py-2 file:text-sm file:font-bold file:text-wit-white hover:file:bg-wit-red-bright"
+            className="block w-full text-sm text-wit-muted file:mr-4 file:rounded-md file:border-0 file:bg-wit-red file:px-4 file:py-2 file:text-sm file:font-bold file:text-wit-onred hover:file:bg-wit-red-bright"
           />
           <Button type="submit" disabled={pending}>
             {pending ? "Importing…" : "Import"}

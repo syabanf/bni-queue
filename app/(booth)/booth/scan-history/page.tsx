@@ -47,7 +47,7 @@ export default async function ScanHistoryPage() {
       {scans.length === 0 ? (
         <EmptyState title="No scans yet" />
       ) : (
-        <GlassCard className="divide-y divide-white/5">
+        <GlassCard className="divide-y divide-wit-border">
           {scans.map((s) => (
             <div key={s.id} className="flex items-center gap-3 px-4 py-3 text-sm">
               <span className="font-mono text-wit-muted w-20 shrink-0">

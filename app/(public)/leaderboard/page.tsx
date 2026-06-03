@@ -60,11 +60,11 @@ export default function LeaderboardPage() {
           <h2 className="text-sm uppercase tracking-wider text-wit-muted mb-3">
             Full ranking
           </h2>
-          <GlassCard className="divide-y divide-white/5 overflow-hidden">
+          <GlassCard className="divide-y divide-wit-border overflow-hidden">
             {rest.map((p) => (
               <div
                 key={p.rank}
-                className="flex items-center gap-4 px-4 py-3 hover:bg-white/5 transition-colors"
+                className="flex items-center gap-4 px-4 py-3 hover:bg-wit-graphite transition-colors"
               >
                 <span className="w-6 text-center text-sm font-bold text-wit-muted tabular-nums">
                   {p.rank}

@@ -178,7 +178,7 @@ export function ScannerClient({
           <button
             type="button"
             onClick={() => setMode("manual")}
-            className="flex-1 rounded-md glass border border-white/10 py-2.5 text-wit-white font-semibold hover:border-wit-red hover:text-wit-red transition-colors"
+            className="flex-1 rounded-md glass border border-wit-border py-2.5 text-wit-white font-semibold hover:border-wit-red hover:text-wit-red transition-colors"
           >
             Manual input
           </button>

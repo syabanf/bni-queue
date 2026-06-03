@@ -330,6 +330,13 @@ export function ParticipantsManager({
               <a href={`/api/qr/${encodeURIComponent(detail.code)}`} download={`${detail.code}.png`}>
                 <Button variant="secondary">Download QR</Button>
               </a>
+              <a
+                href={`/admin/participants/print?code=${encodeURIComponent(detail.code)}`}
+                target="_blank"
+                rel="noopener"
+              >
+                <Button variant="secondary">Print badge</Button>
+              </a>
               <Button onClick={() => setDetail(null)}>Close</Button>
             </div>
           </div>

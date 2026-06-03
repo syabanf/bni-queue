@@ -35,7 +35,7 @@ export default async function MyVisitorsPage() {
       {visitors.length === 0 ? (
         <EmptyState title="No visitors yet" description="Stamps you collect appear here." />
       ) : (
-        <GlassCard className="divide-y divide-white/5">
+        <GlassCard className="divide-y divide-wit-border">
           {visitors.map((v) => (
             <div key={v.id} className="flex items-center gap-3 px-4 py-3 text-sm">
               <span className="font-mono text-wit-muted w-20 shrink-0">

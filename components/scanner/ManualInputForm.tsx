@@ -116,7 +116,7 @@ export function ManualInputForm({
           <button
             type="submit"
             disabled={pending || state.kind === "validating"}
-            className="flex-1 rounded-md bg-wit-red text-wit-white font-bold py-2.5 hover:bg-wit-red-bright disabled:opacity-60"
+            className="flex-1 rounded-md bg-wit-red text-wit-onred font-bold py-2.5 hover:bg-wit-red-bright disabled:opacity-60"
           >
             {state.kind === "validating" ? "Validating…" : "Validate"}
           </button>
@@ -154,7 +154,7 @@ export function ManualInputForm({
             type="button"
             onClick={handleConfirm}
             disabled={state.kind === "submitting"}
-            className="flex-1 rounded-md bg-wit-red text-wit-white font-bold py-2.5 hover:bg-wit-red-bright disabled:opacity-60"
+            className="flex-1 rounded-md bg-wit-red text-wit-onred font-bold py-2.5 hover:bg-wit-red-bright disabled:opacity-60"
           >
             {state.kind === "submitting" ? "Stamping…" : "Confirm stamp"}
           </button>
@@ -176,7 +176,7 @@ export function ManualInputForm({
       <button
         type="button"
         onClick={() => setState({ kind: "input" })}
-        className="mt-3 rounded-md bg-wit-red text-wit-white font-bold px-4 py-2 hover:bg-wit-red-bright"
+        className="mt-3 rounded-md bg-wit-red text-wit-onred font-bold px-4 py-2 hover:bg-wit-red-bright"
       >
         Retry
       </button>

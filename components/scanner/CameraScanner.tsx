@@ -147,7 +147,7 @@ export function CameraScanner({
         <button
           type="button"
           onClick={requestCamera}
-          className="rounded-md bg-wit-red text-wit-white font-bold px-5 py-2 hover:bg-wit-red-bright glow-red transition-colors"
+          className="rounded-md bg-wit-red text-wit-onred font-bold px-5 py-2 hover:bg-wit-red-bright glow-red transition-colors"
         >
           {permissionState === "denied" ? "Try again" : "Enable camera"}
         </button>

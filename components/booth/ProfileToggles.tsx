@@ -55,7 +55,7 @@ export function ProfileToggles() {
         checked={loaded && prefs.sound}
         onChange={(v) => update({ sound: v })}
       />
-      <div className="h-px bg-white/5" />
+      <div className="h-px bg-wit-graphite" />
       <Toggle
         label="Vibration on scan"
         description="Buzz the device on success / duplicate."
@@ -89,7 +89,7 @@ function Toggle({
         aria-checked={checked}
         onClick={() => onChange(!checked)}
         className={`relative h-6 w-11 shrink-0 rounded-full transition-colors ${
-          checked ? "bg-wit-red" : "bg-white/15"
+          checked ? "bg-wit-red" : "bg-wit-border"
         }`}
       >
         <span

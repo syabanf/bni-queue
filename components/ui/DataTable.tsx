@@ -35,7 +35,7 @@ export function DataTable<Row>({
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-white/10 text-left">
+            <tr className="border-b border-wit-border text-left">
               {columns.map((c) => (
                 <th
                   key={c.key}
@@ -53,7 +53,7 @@ export function DataTable<Row>({
             {rows.map((row) => (
               <tr
                 key={rowKey(row)}
-                className="border-b border-white/5 last:border-0 hover:bg-white/5 transition-colors"
+                className="border-b border-wit-border last:border-0 hover:bg-wit-graphite transition-colors"
               >
                 {columns.map((c) => (
                   <td

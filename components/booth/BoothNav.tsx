@@ -24,8 +24,8 @@ export function BoothNav() {
             className={cn(
               "rounded-md px-3 py-1.5 text-xs font-semibold transition-colors",
               active
-                ? "bg-wit-red text-wit-white"
-                : "text-wit-muted hover:text-wit-red hover:bg-white/5",
+                ? "bg-wit-red text-wit-onred"
+                : "text-wit-muted hover:text-wit-red hover:bg-wit-graphite",
             )}
           >
             {l.label}

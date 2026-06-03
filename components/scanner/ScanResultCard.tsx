@@ -160,7 +160,7 @@ function ResultShell({
       <button
         type="button"
         onClick={onNext}
-        className="mt-6 w-full rounded-md bg-wit-red text-wit-white font-bold py-2.5 hover:bg-wit-red-bright"
+        className="mt-6 w-full rounded-md bg-wit-red text-wit-onred font-bold py-2.5 hover:bg-wit-red-bright"
       >
         {buttonLabel}
       </button>

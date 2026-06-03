@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { AuroraBackground } from "@/components/ui/AuroraBackground";
 import { BrandMark } from "@/components/ui/BrandMark";
 import { BoothNav } from "@/components/booth/BoothNav";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 /**
  * Booth PIC shell. Gates everything under `/booth/*` (except /booth/login,
@@ -37,7 +38,7 @@ export default async function BoothLayout({
   return (
     <div className="relative min-h-screen flex flex-col text-wit-white">
       <AuroraBackground subtle />
-      <header className="sticky top-0 z-30 border-b border-white/10 glass">
+      <header className="sticky top-0 z-30 border-b border-wit-border glass">
         <div className="px-4 py-3 flex items-center justify-between">
           <BrandMark withWordmark={false} />
           <div className="flex items-center gap-4">
@@ -49,6 +50,7 @@ export default async function BoothLayout({
                 {session.email ?? "—"}
               </p>
             </div>
+            <ThemeToggle />
             <form action="/booth/logout" method="post">
               <button
                 type="submit"

@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Light-mode variant: target anything under html.light */
+@custom-variant light (&:where(.light, .light *));
+
 @theme {
   /* ===== WIT.ID core palette — red brand on near-black (per wit.id) ===== */
   --color-wit-black: #0a0a0f;
@@ -15,6 +18,8 @@
   --color-wit-red: #f5333d;
   --color-wit-red-bright: #ff5862;
   --color-wit-red-deep: #c81e28;
+  /* Text that sits on a solid red surface — always white, never flips. */
+  --color-wit-onred: #ffffff;
 
   /* Deep maroon used for the gradient sweeps */
   --color-wit-maroon: #5b1119;
@@ -124,16 +129,67 @@
   }
 }
 
+/* ===== Theme variables (dark = default) ===== */
 :root {
   color-scheme: dark;
-  --background: #0a0a0f;
-  --foreground: #ffffff;
+  /* glass surfaces */
+  --glass-bg: color-mix(in oklab, #ffffff 5%, transparent);
+  --glass-bg-strong: color-mix(in oklab, #ffffff 8%, transparent);
+  --glass-panel: linear-gradient(
+    160deg,
+    color-mix(in oklab, #ffffff 7%, transparent),
+    color-mix(in oklab, #ffffff 2%, transparent)
+  );
+  --glass-border: color-mix(in oklab, #ffffff 12%, transparent);
+  --glass-border-strong: color-mix(in oklab, #ffffff 16%, transparent);
+  --hairline: color-mix(in oklab, #ffffff 10%, transparent);
+  /* aurora */
+  --aurora-dot: rgba(255, 255, 255, 0.1);
+  --aurora-veil: rgba(10, 10, 15, 0.72);
+  --aurora-blob-opacity: 1;
+}
+
+/* ===== Light mode ===== */
+html.light {
+  color-scheme: light;
+  /* neutral ramp inverted */
+  --color-wit-black: #f5f7fa; /* page bg */
+  --color-wit-charcoal: #ffffff; /* cards */
+  --color-wit-graphite: #eef1f5; /* panels */
+  --color-wit-border: #e2e6ee; /* borders */
+  --color-wit-white: #14131a; /* primary text */
+  --color-wit-muted: #5b6473; /* secondary text */
+  --color-wit-gray: #8b93a3; /* faint text / placeholders */
+  --color-wit-light-gray: #cdd3dd;
+
+  /* state chips become light tints */
+  --color-state-success-bg: #dcfce7;
+  --color-state-duplicate-bg: #fef3c7;
+  --color-state-invalid-bg: #fee2e2;
+  --color-state-qualified-bg: #ffe4e6;
+  --color-state-inactive-bg: #e5e7eb;
+
+  /* glass becomes frosted white */
+  --glass-bg: color-mix(in oklab, #ffffff 72%, transparent);
+  --glass-bg-strong: color-mix(in oklab, #ffffff 85%, transparent);
+  --glass-panel: linear-gradient(
+    160deg,
+    color-mix(in oklab, #ffffff 85%, transparent),
+    color-mix(in oklab, #ffffff 65%, transparent)
+  );
+  --glass-border: color-mix(in oklab, #0f172a 10%, transparent);
+  --glass-border-strong: color-mix(in oklab, #0f172a 14%, transparent);
+  --hairline: color-mix(in oklab, #0f172a 8%, transparent);
+
+  --aurora-dot: rgba(15, 23, 42, 0.05);
+  --aurora-veil: rgba(245, 247, 250, 0.55);
+  --aurora-blob-opacity: 0.45;
 }
 
 html,
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-wit-black);
+  color: var(--color-wit-white);
   font-family: var(--font-sans);
 }
 
@@ -149,31 +205,26 @@ button {
   font-family: inherit;
 }
 
-/* ===== Glassmorphism utilities ===== */
+/* ===== Glassmorphism utilities (theme-aware via CSS vars) ===== */
 @utility glass {
-  background: color-mix(in oklab, #ffffff 5%, transparent);
+  background: var(--glass-bg);
   backdrop-filter: blur(16px) saturate(140%);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border: 1px solid color-mix(in oklab, #ffffff 12%, transparent);
+  border: 1px solid var(--glass-border);
 }
 
 @utility glass-strong {
-  background: color-mix(in oklab, #ffffff 8%, transparent);
+  background: var(--glass-bg-strong);
   backdrop-filter: blur(28px) saturate(160%);
   -webkit-backdrop-filter: blur(28px) saturate(160%);
-  border: 1px solid color-mix(in oklab, #ffffff 16%, transparent);
+  border: 1px solid var(--glass-border-strong);
 }
 
 @utility glass-panel {
-  background:
-    linear-gradient(
-      160deg,
-      color-mix(in oklab, #ffffff 7%, transparent),
-      color-mix(in oklab, #ffffff 2%, transparent)
-    );
+  background: var(--glass-panel);
   backdrop-filter: blur(20px) saturate(150%);
   -webkit-backdrop-filter: blur(20px) saturate(150%);
-  border: 1px solid color-mix(in oklab, #ffffff 12%, transparent);
+  border: 1px solid var(--glass-border);
 }
 
 /* Brand gradient text (deep → bright red) */
@@ -225,4 +276,15 @@ button {
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--color-wit-border) transparent;
+}
+
+/* ===== Print: force white paper regardless of theme ===== */
+@media print {
+  html,
+  body {
+    background: #ffffff !important;
+  }
+  @page {
+    margin: 12mm;
+  }
 }

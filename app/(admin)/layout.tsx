@@ -6,6 +6,7 @@ import { AuroraBackground } from "@/components/ui/AuroraBackground";
 import { BrandMark } from "@/components/ui/BrandMark";
 import { AdminMobileNav } from "@/components/admin/AdminMobileNav";
 import { AdminSidebarNav } from "@/components/admin/AdminSidebarNav";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export default async function AdminLayout({
   children,
@@ -38,24 +39,27 @@ export default async function AdminLayout({
       <AuroraBackground subtle />
 
       {/* Desktop sidebar */}
-      <aside className="hidden md:flex w-60 shrink-0 flex-col border-r border-white/10 glass">
-        <div className="px-5 py-5 border-b border-white/10">
+      <aside className="hidden md:flex w-60 shrink-0 flex-col border-r border-wit-border glass print:!hidden">
+        <div className="px-5 py-5 border-b border-wit-border">
           <BrandMark />
         </div>
         <AdminSidebarNav />
-        <div className="border-t border-white/10 px-5 py-4 text-xs">
+        <div className="border-t border-wit-border px-5 py-4 text-xs">
           <p className="text-wit-muted truncate">{session.email}</p>
           <p className="uppercase tracking-wider text-gradient font-semibold mt-1">
             {session.role.replace("_", " ")}
           </p>
-          <form action="/admin/logout" method="post" className="mt-3">
-            <button
-              type="submit"
-              className="text-wit-muted hover:text-wit-red transition-colors"
-            >
-              Sign out
-            </button>
-          </form>
+          <div className="mt-3 flex items-center justify-between">
+            <form action="/admin/logout" method="post">
+              <button
+                type="submit"
+                className="text-wit-muted hover:text-wit-red transition-colors"
+              >
+                Sign out
+              </button>
+            </form>
+            <ThemeToggle className="-mr-1" />
+          </div>
         </div>
       </aside>
 

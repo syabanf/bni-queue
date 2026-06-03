@@ -28,11 +28,16 @@ export default async function ParticipantsPage() {
         title="Directory"
         description="Create, edit, and remove participants, or bulk-import from Excel/CSV. PII is admin-only; the public leaderboard masks names."
         actions={
-          isAdmin(session.role) ? (
-            <Link href="/admin/participants/import">
-              <Button variant="secondary">Import</Button>
+          <div className="flex gap-2">
+            <Link href="/admin/participants/print">
+              <Button variant="secondary">Print QR badges</Button>
             </Link>
-          ) : undefined
+            {isAdmin(session.role) ? (
+              <Link href="/admin/participants/import">
+                <Button variant="secondary">Import</Button>
+              </Link>
+            ) : null}
+          </div>
         }
       />
       <SummaryCards

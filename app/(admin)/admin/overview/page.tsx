@@ -84,7 +84,7 @@ export default async function AdminOverviewPage() {
                     {f.count.toLocaleString()} · {pct}%
                   </span>
                 </div>
-                <div className="h-2.5 rounded-full bg-white/5 overflow-hidden">
+                <div className="h-2.5 rounded-full bg-wit-graphite overflow-hidden">
                   <div
                     className="h-full rounded-full"
                     style={{

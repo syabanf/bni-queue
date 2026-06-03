@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { ADMIN_NAV_GROUPS } from "@/lib/admin/nav";
 import { BrandMark } from "@/components/ui/BrandMark";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 /**
  * Mobile-only admin navigation: a sticky top bar with a hamburger that opens a
@@ -24,19 +25,22 @@ export function AdminMobileNav({
     pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <div className="md:hidden">
-      <div className="sticky top-0 z-30 flex items-center justify-between border-b border-white/10 glass px-4 py-3">
+    <div className="md:hidden print:hidden">
+      <div className="sticky top-0 z-30 flex items-center justify-between border-b border-wit-border glass px-4 py-3">
         <Link href="/admin/overview" onClick={() => setOpen(false)}>
           <BrandMark />
         </Link>
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          aria-label="Open menu"
-          className="-mr-2 p-2 text-wit-white"
-        >
-          <Menu size={22} />
-        </button>
+        <div className="flex items-center gap-1">
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            aria-label="Open menu"
+            className="-mr-2 p-2 text-wit-white"
+          >
+            <Menu size={22} />
+          </button>
+        </div>
       </div>
 
       {open ? (
@@ -47,7 +51,7 @@ export function AdminMobileNav({
             aria-hidden
           />
           <div className="absolute inset-y-0 left-0 w-72 max-w-[85%] glass-strong flex flex-col animate-rise">
-            <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
+            <div className="flex items-center justify-between border-b border-wit-border px-5 py-4">
               <BrandMark />
               <button
                 type="button"
@@ -76,8 +80,8 @@ export function AdminMobileNav({
                         aria-current={active ? "page" : undefined}
                         className={
                           active
-                            ? "block rounded-md px-3 py-2.5 font-semibold text-wit-white bg-wit-red"
-                            : "block rounded-md px-3 py-2.5 text-wit-muted hover:bg-white/5 hover:text-wit-red transition-colors"
+                            ? "block rounded-md px-3 py-2.5 font-semibold text-wit-onred bg-wit-red"
+                            : "block rounded-md px-3 py-2.5 text-wit-muted hover:bg-wit-graphite hover:text-wit-red transition-colors"
                         }
                       >
                         {item.label}
@@ -87,7 +91,7 @@ export function AdminMobileNav({
                 </div>
               ))}
             </nav>
-            <div className="border-t border-white/10 px-5 py-4 text-xs">
+            <div className="border-t border-wit-border px-5 py-4 text-xs">
               <p className="text-wit-muted truncate">{email}</p>
               <p className="uppercase tracking-wider text-gradient font-semibold mt-1">
                 {role.replace("_", " ")}

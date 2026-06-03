@@ -3,9 +3,9 @@ import { Avatar } from "@/components/ui/Avatar";
 import type { MockParticipant } from "@/lib/dev/leaderboard-mock";
 
 const RANK_STYLE = {
-  1: { ring: "glow-red", badge: "bg-wit-red text-wit-white", order: "md:order-2 md:-translate-y-4" },
-  2: { ring: "glow-red", badge: "bg-wit-red text-wit-white", order: "md:order-1" },
-  3: { ring: "", badge: "bg-wit-red text-wit-white", order: "md:order-3" },
+  1: { ring: "glow-red", badge: "bg-wit-red text-wit-onred", order: "md:order-2 md:-translate-y-4" },
+  2: { ring: "glow-red", badge: "bg-wit-red text-wit-onred", order: "md:order-1" },
+  3: { ring: "", badge: "bg-wit-red text-wit-onred", order: "md:order-3" },
 } as const;
 
 /**

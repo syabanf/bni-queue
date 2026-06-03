@@ -1,6 +1,7 @@
 import { AuroraBackground } from "@/components/ui/AuroraBackground";
 import { GlowOrb } from "@/components/ui/GlowOrb";
 import { BrandMark } from "@/components/ui/BrandMark";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 /**
  * Full-screen auth backdrop: aurora mesh + a glowing brand lockup above a glass
@@ -10,6 +11,10 @@ export function AuthShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center px-6 py-10">
       <AuroraBackground />
+
+      <div className="absolute top-4 right-4 z-10">
+        <ThemeToggle />
+      </div>
 
       <div className="relative mb-8 flex flex-col items-center text-center">
         <GlowOrb color="cyan" className="-top-6 left-1/2 h-32 w-32 -translate-x-1/2" />

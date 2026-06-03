@@ -94,7 +94,7 @@ export function RaffleManager({
               Generate eligible list
             </Button>
 
-            <form action={(fd) => start(async () => { const r = await drawWinners(undefined, fd); setNotice(r); router.refresh(); })} className="space-y-3 border-t border-white/10 pt-4">
+            <form action={(fd) => start(async () => { const r = await drawWinners(undefined, fd); setNotice(r); router.refresh(); })} className="space-y-3 border-t border-wit-border pt-4">
               <div className="grid grid-cols-2 gap-3">
                 <Field label="How many">
                   <Input type="number" name="count" min={1} max={50} defaultValue={1} />
@@ -108,7 +108,7 @@ export function RaffleManager({
               </Button>
             </form>
 
-            <div className="border-t border-white/10 pt-4">
+            <div className="border-t border-wit-border pt-4">
               <Button
                 variant="danger"
                 onClick={() => run(lockResults)}
@@ -134,9 +134,9 @@ export function RaffleManager({
             {winners.map((w) => (
               <li
                 key={w.order}
-                className="flex items-center gap-4 rounded-md bg-white/5 px-4 py-3"
+                className="flex items-center gap-4 rounded-md bg-wit-graphite px-4 py-3"
               >
-                <span className="grid h-8 w-8 place-items-center rounded-full bg-wit-red text-wit-white font-bold text-sm">
+                <span className="grid h-8 w-8 place-items-center rounded-full bg-wit-red text-wit-onred font-bold text-sm">
                   {w.order}
                 </span>
                 <div className="flex-1">

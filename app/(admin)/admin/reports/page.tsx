@@ -57,7 +57,7 @@ export default async function ReportsPage() {
         <h2 className="text-sm uppercase tracking-wider text-wit-muted mb-3">
           Recent activity (audit log)
         </h2>
-        <GlassCard className="divide-y divide-white/5">
+        <GlassCard className="divide-y divide-wit-border">
           {audit.map((a) => (
             <div key={a.id} className="flex items-center gap-4 px-4 py-2.5 text-sm">
               <span className="font-mono text-wit-muted w-36 shrink-0">

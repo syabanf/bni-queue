@@ -64,7 +64,7 @@ export function LoginForm({ surface, title, subtitle }: LoginFormProps) {
         <button
           type="submit"
           disabled={pending}
-          className="w-full rounded-md bg-wit-red text-wit-white font-bold py-2.5 hover:bg-wit-red-bright disabled:opacity-60 transition-colors glow-red"
+          className="w-full rounded-md bg-wit-red text-wit-onred font-bold py-2.5 hover:bg-wit-red-bright disabled:opacity-60 transition-colors glow-red"
         >
           {pending ? "Signing in…" : "Sign in"}
         </button>
