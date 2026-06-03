@@ -3,13 +3,13 @@ import { cookies } from "next/headers";
 import type { UserRole } from "./rbac";
 
 /**
- * Dev-only session shortcut. Lets you click through the app before a real
- * Supabase project is wired up. Active only when NODE_ENV !== "production"
- * AND BNI_DEV_AUTH=true. The flag is opt-in even in dev so it never ships
- * silently.
+ * Demo session shortcut. Lets visitors click "Sign in as <role>" to explore
+ * the app without real credentials. Active whenever BNI_DEV_AUTH=true — the
+ * flag is opt-in so it never ships silently. Set it ONLY on demo deployments
+ * (no real PII), never on a production tenant.
  *
- * Stored as a single JSON cookie; not signed (it's a local dev convenience,
- * not a security boundary).
+ * Stored as a single JSON cookie; not signed (it's a demo convenience, not a
+ * security boundary).
  */
 
 const COOKIE_NAME = "bni_dev_session";
@@ -24,10 +24,7 @@ export interface DevSession {
 }
 
 export function devAuthEnabled(): boolean {
-  return (
-    process.env.NODE_ENV !== "production" &&
-    process.env.BNI_DEV_AUTH === "true"
-  );
+  return process.env.BNI_DEV_AUTH === "true";
 }
 
 export async function getDevSession(): Promise<DevSession | null> {
