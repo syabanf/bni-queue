@@ -99,12 +99,16 @@ query/write path runs — **no code changes needed to go live**.
    SUPABASE_SERVICE_ROLE_KEY=...
    QR_HMAC_SECRET=<openssl rand -base64 48 | tr -d '\n=' | tr '+/' '-_'>
    NEXT_PUBLIC_SITE_URL=https://your-domain
-   # IMPORTANT: do NOT set BNI_DEV_AUTH in production.
    ```
-5. **Bootstrap a Super Admin:** create an `auth.users` row via the Supabase
-   Dashboard, then insert a matching `public.users` row with
-   `role = 'super_admin'`. The DB trigger mirrors the role into JWT claims on
-   next login. After that, create all other staff via **Admin → Users**.
+   ⚠️ **Remove / unset `BNI_DEV_AUTH`.** While it is `true`, the app stays in
+   demo mode (mock data, dummy logins) **even with real Supabase creds** —
+   `isMockMode()` is gated on that flag, not on `NODE_ENV`.
+5. **Bootstrap a Super Admin:** run [`supabase/seed.sql`](supabase/seed.sql) in
+   the SQL editor. Option A (recommended): create the user in Dashboard →
+   Authentication → Add user (auto-confirm), set the email/name at the top of
+   the file, then run it to promote that user to `super_admin`. The DB trigger
+   mirrors the role into JWT claims on next sign-in. After that, create all
+   other staff via **Admin → Users**.
 6. **Deploy to Vercel** (or any Node host). `pnpm build` must pass (it does).
 7. **Verify** the Settings page shows "Supabase configured: Yes" and
    "Current data source: Live Supabase".
